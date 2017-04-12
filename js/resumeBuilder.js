@@ -20,11 +20,11 @@ var bio = {
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
     $("#header").prepend(formattedName, formattedRole); // prepend, so that it appears before #topContacts
 
-    $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
-    $("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
-    $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
-    $("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
-    $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+    $("#topContacts, #footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+    $("#topContacts, #footerContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+    $("#topContacts, #footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+    $("#topContacts, #footerContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+    $("#topContacts, #footerContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
 
     $("#header").append(HTMLbioPic.replace("%data%", bio.biopic));
     $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
@@ -51,7 +51,8 @@ var work = {
     work.jobs.forEach(function(ele) {
       $("#workExperience").append(HTMLworkStart);
 
-      var formattedEmployerTitle = HTMLworkEmployer.replace("%data%", ele.employer) + HTMLworkTitle.replace("%data%", ele.title);
+      var formattedEmployerTitle = HTMLworkEmployer.replace("%data%", ele.employer)
+      + HTMLworkTitle.replace("%data%", ele.title);
       // work entry is div created by HTMLworkStart, :last makes sure it is the current div.
       $(".work-entry:last").append(formattedEmployerTitle);
       $(".work-entry:last").append(HTMLworkDates.replace("%data%", ele.dates));
